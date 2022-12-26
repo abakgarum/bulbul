@@ -22,6 +22,11 @@ Route::prefix('v1')->group(function () {
     Route::post('login', 'App\Http\Controllers\Api\v1\AuthController@login');
     Route::post('register', 'App\Http\Controllers\Api\v1\AuthController@register');
 
+    // Forget Password Api
+    Route::post('password/email', App\Http\Controllers\Api\v1\PasswordReset\ForgetPasswordController::class);
+    Route::post('password/code/check', App\Http\Controllers\Api\v1\PasswordReset\CodeCheckController::class);
+    Route::post('password/reset', App\Http\Controllers\Api\v1\PasswordReset\ResetPasswordController::class);
+
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('logout', 'App\Http\Controllers\Api\v1\AuthController@logout');
